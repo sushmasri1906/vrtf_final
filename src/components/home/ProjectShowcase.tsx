@@ -61,19 +61,19 @@ export default function ProjectShowcase() {
 
 				{/* 3D Ring Carousel */}
 				<div className="group relative mt-4 w-full select-none">
-					<div className="mx-auto h-[260px] sm:h-[320px] md:h-[420px] w-full max-w-6xl [perspective:1400px]">
+					<div className="mx-auto h-[260px] sm:h-[340px] md:h-[420px] w-full max-w-6xl [perspective:1400px]">
 						<div
 							className="relative mx-auto h-full w-full [transform-style:preserve-3d]"
-							style={{ animation: "spin3d 45s linear infinite" }}>
+							style={{ animation: "spin3d 55s linear infinite" }}>
 							{PROJECTS.map((p, i) => {
 								const rotate = i * step;
 
 								return (
 									<figure
 										key={i}
-										className="absolute left-1/2 top-1/2 h-[150px] w-[240px] sm:h-[200px] sm:w-[320px] md:h-[240px] md:w-[380px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border border-white/10 bg-[#0b1f3a]/60 shadow-[0_0_30px_rgba(3,101,208,0.15)] backdrop-blur-md transition duration-500 hover:scale-[1.07]"
+										className="absolute left-1/2 top-1/2 h-[110px] w-[180px] sm:h-[160px] sm:w-[260px] md:h-[220px] md:w-[340px] lg:h-[240px] lg:w-[380px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border border-white/10 bg-[#0b1f3a]/60 shadow-[0_0_30px_rgba(3,101,208,0.15)] backdrop-blur-md transition duration-500 hover:scale-[1.07]"
 										style={{
-											transform: `rotateY(${rotate}deg) translateZ(clamp(180px,40vw,520px))`,
+											transform: `rotateY(${rotate}deg) translateZ(clamp(260px,45vw,620px))`,
 										}}>
 										<Image
 											src={p.src}
@@ -87,7 +87,7 @@ export default function ProjectShowcase() {
 						</div>
 					</div>
 
-					{/* Brand Reflection Glow */}
+					{/* Glow */}
 					<div className="pointer-events-none absolute inset-x-0 -bottom-8 mx-auto h-28 w-3/4 rounded-[100%] bg-gradient-to-r from-[#00A0E3]/25 via-[#0365D0]/25 to-[#0E3C6E]/25 blur-3xl" />
 				</div>
 

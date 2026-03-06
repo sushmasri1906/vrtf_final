@@ -1,9 +1,9 @@
 import FeaturedProjects from "@/components/home/FeauredProjects";
 import Hero from "@/components/home/Hero";
-import LogoCarousel from "@/components/home/Logocarousel";
 import ProjectShowcase from "@/components/home/ProjectShowcase";
 import ServicesMini from "@/components/home/ServicesMini";
 import Testimonials from "@/components/home/Testimonials";
+import LogoCarousel from "@/components/home/Logocarousel";
 import React from "react";
 
 const page = () => {
@@ -12,8 +12,8 @@ const page = () => {
 			<Hero />
 			<ServicesMini />
 			<FeaturedProjects />
-
 			<LogoCarousel />
+
 			<ProjectShowcase />
 
 			<Testimonials />

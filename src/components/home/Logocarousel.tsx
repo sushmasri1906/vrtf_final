@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const logos = [
+const logos: string[] = [
 	"https://res.cloudinary.com/dwsm6i6z9/image/upload/v1770361958/VR_KP_Logo_zgv7j5.png",
 	"https://res.cloudinary.com/dgulr1hgd/image/upload/v1752675634/VR_KISAN_PARIVAAR-04_1_rbcvyz.png",
 	"https://res.cloudinary.com/dwsm6i6z9/image/upload/v1771917357/ULHC_Logo_-_PNG_yjb2jy.png",
@@ -12,11 +12,13 @@ const logos = [
 ];
 
 export default function LogoCarousel() {
+	const duplicatedLogos = [...logos, ...logos];
+
 	return (
-		<section className="relative overflow-hidden bg-white py-24">
-			<div className="mx-auto max-w-7xl px-6 text-center">
+		<section className="relative overflow-hidden bg-white py-16 md:py-24">
+			<div className="mx-auto max-w-7xl px-4 text-center sm:px-6">
 				{/* Heading */}
-				<h2 className="text-3xl md:text-4xl font-semibold text-[#0E3C6E]">
+				<h2 className="text-2xl font-semibold text-[#0E3C6E] sm:text-3xl md:text-4xl">
 					Trusted By{" "}
 					<span className="bg-gradient-to-r from-[#0365D0] to-[#0E3C6E] bg-clip-text text-transparent">
 						Leading Organizations
@@ -24,21 +26,17 @@ export default function LogoCarousel() {
 				</h2>
 
 				{/* Marquee */}
-				<div className="relative mt-16 overflow-hidden">
-					{/* Edge fade */}
-					<div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-20" />
-					<div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-20" />
-
+				<div className="relative mt-12 overflow-hidden md:mt-16">
 					<motion.div
-						className="flex gap-20"
+						className="flex items-center gap-8 sm:gap-12 md:gap-16 lg:gap-20"
 						animate={{ x: ["0%", "-50%"] }}
 						transition={{
 							repeat: Infinity,
-							duration: 35,
+							duration: 28,
 							ease: "linear",
 						}}>
-						{[...logos, ...logos].map((logo, i) => (
-							<LogoItem key={i} src={logo} />
+						{duplicatedLogos.map((logo, index) => (
+							<LogoItem key={index} src={logo} />
 						))}
 					</motion.div>
 				</div>
@@ -52,16 +50,30 @@ export default function LogoCarousel() {
 function LogoItem({ src }: { src: string }) {
 	return (
 		<motion.div
-			whileHover={{ y: -12 }}
-			transition={{ type: "spring", stiffness: 180, damping: 18 }}
-			className="relative flex items-center justify-center">
-			<div className="flex h-24 w-52 items-center justify-center rounded-xl bg-white border border-slate-200 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-[#0365D0]/30">
+			whileHover={{ y: -6 }}
+			transition={{ type: "spring", stiffness: 200, damping: 18 }}
+			className="flex items-center justify-center">
+			<div
+				className="
+				flex items-center justify-center
+				h-16 w-32
+				sm:h-20 sm:w-40
+				md:h-24 md:w-48
+				p-4 sm:p-5
+				rounded-xl
+				bg-white
+				border border-slate-200
+				shadow-sm
+				transition-all duration-300
+				hover:shadow-lg
+				hover:border-[#0365D0]/30
+			">
 				<Image
 					src={src}
 					alt="Client Logo"
-					width={150}
-					height={70}
-					className="object-contain transition duration-300"
+					width={120}
+					height={60}
+					className="mx-auto max-h-[40px] w-auto object-contain sm:max-h-[50px] md:max-h-[60px]"
 				/>
 			</div>
 		</motion.div>

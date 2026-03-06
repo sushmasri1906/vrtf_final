@@ -124,88 +124,99 @@ const services: Service[] = [
 
 export default function ServiceSection() {
 	return (
-		<section className="bg-white py-32 relative overflow-hidden">
-			{/* Soft Background Accent */}
-			<div className="absolute top-0 right-0 h-[600px] w-[600px] bg-gradient-to-br from-[#00A0E3]/10 to-[#0365D0]/10 blur-[140px] rounded-full pointer-events-none" />
+		<section className="relative overflow-hidden bg-white py-20 md:py-28">
+			{/* Background Glow */}
+			<div
+				aria-hidden
+				className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-[#00A0E3]/10 to-[#0365D0]/10 blur-[120px]"
+			/>
 
-			<div className="max-w-6xl mx-auto px-6 relative">
-				{/* ===== Header ===== */}
+			<div className="relative mx-auto max-w-6xl px-6">
+				{/* Header */}
+
 				<div className="max-w-3xl">
-					<p className="text-sm tracking-[0.3em] uppercase text-[#0365D0] font-semibold">
+					<p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#0365D0]">
 						Our Capabilities
 					</p>
 
-					<h2 className="mt-6 text-5xl font-semibold text-gray-900 leading-tight">
+					<h2 className="mt-6 text-4xl font-semibold leading-tight text-gray-900 md:text-5xl">
 						Structured Technology
-						<span className="block text-gray-400">
+						<span className="block text-[#0365D0]">
 							Built for Scalable Growth
 						</span>
 					</h2>
 
-					<p className="mt-6 text-lg text-gray-600 leading-relaxed">
+					<p className="mt-6 text-lg leading-relaxed text-gray-600">
 						We design complete technology ecosystems that simplify operations,
 						improve efficiency, and prepare your business for long-term growth.
 					</p>
 				</div>
 
-				{/* ===== Timeline ===== */}
-				<div className="mt-24 relative">
-					{/* Center Line */}
-					<div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 h-full w-[2px] bg-gradient-to-b from-[#00A0E3] to-[#0365D0]" />
+				{/* Timeline */}
 
-					<div className="space-y-32">
-						{services.map((service, index) => {
+				<div className="relative mt-20">
+					{/* Center Line */}
+
+					<div className="absolute left-5 top-0 h-full w-[2px] bg-gradient-to-b from-[#00A0E3] to-[#0365D0] md:left-1/2 md:-translate-x-1/2" />
+
+					<div className="space-y-16 md:space-y-24">
+						{services.map((service) => {
 							const Icon = service.icon;
+							const index = Number(service.number) - 1;
 							const isEven = index % 2 === 0;
 
 							return (
 								<motion.div
-									key={index}
-									initial={{ opacity: 0, y: 50 }}
+									key={service.number}
+									initial={{ opacity: 0, y: 40 }}
 									whileInView={{ opacity: 1, y: 0 }}
-									transition={{ duration: 0.8 }}
+									transition={{ duration: 0.6 }}
 									viewport={{ once: true }}
-									className="relative grid md:grid-cols-2 gap-20 items-center">
-									{/* Timeline Node */}
-									<div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center h-12 w-12 rounded-full bg-white border-4 border-[#0365D0] shadow-lg z-10">
-										<Icon className="text-[#0365D0]" size={20} />
+									className="relative grid items-start gap-10 pl-12 md:grid-cols-2 md:gap-20 md:pl-0">
+									{/* Timeline Icon */}
+
+									<div className="absolute left-0 z-10 flex h-10 w-10 items-center justify-center rounded-full border-4 border-[#0365D0] bg-white shadow-md md:left-1/2 md:-translate-x-1/2">
+										<Icon className="text-[#0365D0]" size={18} />
 									</div>
 
-									{/* LEFT SIDE */}
 									{isEven ? (
 										<>
-											{/* Number Side */}
-											<div className="hidden md:flex justify-end pr-24">
-												<span className="text-[140px] font-bold text-gray-100 select-none">
+											{/* Number */}
+
+											<div className="hidden justify-end pr-20 md:flex">
+												<span className="select-none text-[120px] font-bold text-gray-100">
 													{service.number}
 												</span>
 											</div>
 
-											{/* Content Side */}
-											<div className="md:pl-24">
-												<h3 className="text-3xl font-semibold text-gray-900 flex items-center gap-4">
-													<Icon className="text-[#0365D0]" size={28} />
+											{/* Content */}
+
+											<div className="md:pl-20">
+												<h3 className="flex items-center gap-3 text-2xl font-semibold text-gray-900 md:text-3xl">
+													<Icon className="text-[#0365D0]" size={24} />
 													{service.title}
 												</h3>
 
-												<p className="mt-6 text-gray-600 text-lg leading-relaxed">
+												<p className="mt-4 leading-relaxed text-gray-600">
 													{service.description}
 												</p>
 
-												<ul className="mt-8 space-y-3">
-													{service.points.map((point, i) => (
-														<li key={i} className="text-gray-700 flex gap-3">
+												<ul className="mt-6 space-y-2">
+													{service.points.map((point) => (
+														<li
+															key={point}
+															className="flex gap-3 text-gray-700">
 															<span className="mt-2 h-2 w-2 rounded-full bg-[#0365D0]" />
 															<span>{point}</span>
 														</li>
 													))}
 												</ul>
 
-												<div className="mt-10 border-l-4 border-[#0365D0] pl-6">
-													<p className="text-sm uppercase tracking-wide text-gray-500">
+												<div className="mt-6 border-l-4 border-[#0365D0] pl-4">
+													<p className="text-xs uppercase tracking-wide text-gray-500">
 														Business Impact
 													</p>
-													<p className="mt-2 text-gray-800 font-medium">
+													<p className="mt-1 font-medium text-gray-800">
 														{service.impact}
 													</p>
 												</div>
@@ -213,39 +224,43 @@ export default function ServiceSection() {
 										</>
 									) : (
 										<>
-											{/* Content Side */}
-											<div className="md:pr-24">
-												<h3 className="text-3xl font-semibold text-gray-900 flex items-center gap-4">
-													<Icon className="text-[#0365D0]" size={28} />
+											{/* Content */}
+
+											<div className="md:pr-20">
+												<h3 className="flex items-center gap-3 text-2xl font-semibold text-gray-900 md:text-3xl">
+													<Icon className="text-[#0365D0]" size={24} />
 													{service.title}
 												</h3>
 
-												<p className="mt-6 text-gray-600 text-lg leading-relaxed">
+												<p className="mt-4 leading-relaxed text-gray-600">
 													{service.description}
 												</p>
 
-												<ul className="mt-8 space-y-3">
-													{service.points.map((point, i) => (
-														<li key={i} className="text-gray-700 flex gap-3">
+												<ul className="mt-6 space-y-2">
+													{service.points.map((point) => (
+														<li
+															key={point}
+															className="flex gap-3 text-gray-700">
 															<span className="mt-2 h-2 w-2 rounded-full bg-[#0365D0]" />
 															<span>{point}</span>
 														</li>
 													))}
 												</ul>
 
-												<div className="mt-10 border-l-4 border-[#0365D0] pl-6">
-													<p className="text-sm uppercase tracking-wide text-gray-500">
+												<div className="mt-6 border-l-4 border-[#0365D0] pl-4">
+													<p className="text-xs uppercase tracking-wide text-gray-500">
 														Business Impact
 													</p>
-													<p className="mt-2 text-gray-800 font-medium">
+													<p className="mt-1 font-medium text-gray-800">
 														{service.impact}
 													</p>
 												</div>
 											</div>
 
-											{/* Number Side */}
-											<div className="hidden md:flex justify-start pl-24">
-												<span className="text-[140px] font-bold text-gray-100 select-none">
+											{/* Number */}
+
+											<div className="hidden justify-start pl-20 md:flex">
+												<span className="select-none text-[120px] font-bold text-gray-100">
 													{service.number}
 												</span>
 											</div>
